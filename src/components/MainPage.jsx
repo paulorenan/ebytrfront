@@ -8,7 +8,10 @@ function MainPage() {
     <Box 
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(to right, #a8ff78, #78ffd6)'
+        background: 'linear-gradient(to right, #a8ff78, #78ffd6)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
       }}
     >
       <Header />
