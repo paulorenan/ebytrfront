@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import EditTask from './EditTask';
+import DelTask from './DelTask';
 
 export default function TaskCard({ task, fetchTasks }) {
   const [status, setStatus] = useState({});
@@ -58,7 +59,7 @@ export default function TaskCard({ task, fetchTasks }) {
         </Box>
         <Box sx={ { display: 'flex', alignItems: 'center' } }>
           <EditTask task={task} fetchTasks={fetchTasks} />
-          <Button size="small">Excluir</Button>
+          <DelTask task={task} fetchTasks={fetchTasks} />
         </Box>
       </CardActions>
     </Card>
