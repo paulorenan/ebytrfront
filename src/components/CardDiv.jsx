@@ -7,6 +7,8 @@ import AddTask from './AddTask';
 function CardDiv() {
   const [tasks, setTasks] = useState([]);
   const [orderAlpha, setOrderAlpha] = useState(false);
+  const [orderDate, setOrderDate] = useState(false);
+  const [orderStatus, setOrderStatus] = useState(false);
 
   useEffect(() => {
     axios.get('https://ebytrback.herokuapp.com/tasks').then(res => {
@@ -30,29 +32,21 @@ function CardDiv() {
   };
 
   const ordenarData = () => {
-    const tasksOrdenadas = tasks.sort((a, b) => {
-      if (a.createdAt < b.createdAt) {
-        return -1;
-      }
-      if (a.createdAt > b.createdAt) {
-        return 1;
-      }
-      return 0;
-    });
-    setTasks(tasksOrdenadas);
+    if (!orderDate) {
+      setTasks(tasks.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)));
+    } else {
+      setTasks(tasks.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)).reverse());
+    }
+    setOrderDate(!orderDate);
   };
 
   const ordenarStatus = () => {
-    const tasksOrdenadas = tasks.sort((a, b) => {
-      if (a.status < b.status) {
-        return -1;
-      }
-      if (a.status > b.status) {
-        return 1;
-      }
-      return 0;
-    });
-    setTasks(tasksOrdenadas);
+    if (!orderStatus) {
+      setTasks(tasks.sort((a, b) => a.status - b.status));
+    } else {
+      setTasks(tasks.sort((a, b) => a.status - b.status).reverse());
+    }
+    setOrderStatus(!orderStatus);
   };
 
   return (
