@@ -4,8 +4,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import EditTask from './EditTask';
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, fetchTasks }) {
   const [status, setStatus] = useState({});
 
   useEffect(() => {
@@ -55,10 +56,10 @@ export default function TaskCard({ task }) {
             { new Date(task.createdAt).toLocaleDateString() }
           </Typography>
         </Box>
-        <div>
-        <Button size="small">Editar</Button>
-        <Button size="small">Excluir</Button>
-        </div>
+        <Box sx={ { display: 'flex', alignItems: 'center' } }>
+          <EditTask task={task} fetchTasks={fetchTasks} />
+          <Button size="small">Excluir</Button>
+        </Box>
       </CardActions>
     </Card>
   );

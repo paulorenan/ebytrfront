@@ -13,6 +13,12 @@ function CardDiv() {
     });
   }, []);
 
+  const fetchTasks = () => {
+    axios.get('https://ebytrback.herokuapp.com/tasks').then(res => {
+      setTasks(res.data);
+    });
+  };
+
   return (
     <Box
       sx={{
@@ -24,10 +30,10 @@ function CardDiv() {
         maxWidth: '70rem',
         minWidth: '50px',
         padding: '1rem',
-        marginTop: '1rem',
+        marginTop: '0.5rem',
       }}
     >
-      <AddTask />
+      <AddTask fetchTasks={fetchTasks} />
       <Box
         sx={{
           display: 'flex',
@@ -41,6 +47,7 @@ function CardDiv() {
           <TaskCard
             key={task._id}
             task={task}
+            fetchTasks={fetchTasks}
           />
         ))}
       </Box>

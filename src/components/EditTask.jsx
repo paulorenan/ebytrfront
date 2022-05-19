@@ -9,7 +9,7 @@ import LoadingButton from '@mui/lab/LoadingButton';
 import DialogTitle from '@mui/material/DialogTitle';
 import axios from 'axios';
 
-export default function AddTask({ fetchTasks }) {
+export default function EditTask({ task, fetchTasks }) {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -24,25 +24,28 @@ export default function AddTask({ fetchTasks }) {
     setOpen(false);
   };
 
+  useEffect(() => {
+    setTitle(task.title);
+    setDescription(task.description);
+    setStatus(task.status);
+  }, [task]);
+
   const handleSubmit = () => {
     if (title === '' || description === '') {
       alert('Preencha todos os campos');
       return;
     }
     setLoading(true);
-    axios.post('https://ebytrback.herokuapp.com/tasks', {
+    axios.put(`https://ebytrback.herokuapp.com/tasks/${task._id}`, {
       title,
       description,
       status,
     }).then(() => {
       setOpen(false);
-      setTitle('');
-      setDescription('');
-      setStatus('0');
       fetchTasks();
       setLoading(false);
     }).catch(() => {
-      alert('Erro ao cadastrar tarefa');
+      alert('Erro ao editar tarefa');
       setLoading(false);
     });
   };
@@ -50,11 +53,11 @@ export default function AddTask({ fetchTasks }) {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen}>
-        Adicionar Tarefa
+      <Button variant="text" size='small' onClick={handleClickOpen}>
+        Editar
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Adicionar Tarefa</DialogTitle>
+        <DialogTitle>Editar Tarefa</DialogTitle>
         <DialogContent>
           <Box component="form" onSubmit={handleSubmit}>
             <TextField
