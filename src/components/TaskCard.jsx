@@ -53,7 +53,7 @@ export default function TaskCard({ task, fetchTasks }) {
             {status.text}
           </Typography>
           <Typography sx={{ marginLeft: '10px' }} >
-            { new Date(task.createdAt).toLocaleDateString() }
+            { new Date(task.createdAt).toLocaleDateString('pt-BR') }
           </Typography>
         </Box>
         <Box sx={ { display: 'flex', alignItems: 'center' } }>
