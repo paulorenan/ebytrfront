@@ -106,7 +106,7 @@ export default function EditTask({ task, fetchTasks }) {
             Cancelar
           </LoadingButton>
           <LoadingButton onClick={handleSubmit} type='submit' loading={loading}>
-            Adicionar
+            Editar
           </LoadingButton>
         </DialogActions>
       </Dialog>
