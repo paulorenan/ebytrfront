@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import { Box, MenuItem, Select } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -50,7 +50,11 @@ export default function AddTask({ fetchTasks }) {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleClickOpen}>
+      <Button 
+        variant="contained" 
+        onClick={handleClickOpen}
+        sx={{ margin: '20px' }}
+      >
         Adicionar Tarefa
       </Button>
       <Dialog open={open} onClose={handleClose}>

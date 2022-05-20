@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { Box, Card } from '@mui/material';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import EditTask from './EditTask';
 import DelTask from './DelTask';
@@ -39,7 +38,7 @@ export default function TaskCard({ task, fetchTasks }) {
   }, [task.status]);
 
   return (
-    <Card sx={{ width: '100%', maxWidth: '30rem', margin: '1rem' }}>
+    <Card sx={{ width: '100%', maxWidth: '30rem', marginTop: '1rem' }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {task.title}

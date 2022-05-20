@@ -7,6 +7,7 @@ function MainPage() {
   return (
     <Box 
       sx={{
+        width: '100vw',
         minHeight: '100vh',
         background: 'linear-gradient(to right, #a8ff78, #78ffd6)',
         display: 'flex',
